@@ -1,0 +1,24 @@
+{
+    "title": "BLS Occupation Wage Lookup Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "occupations": {
+            "title": "Occupations",
+            "type": "array",
+            "editor": "json",
+            "description": "List of occupations to look up: [{ \"socCode\": \"15-1252\", \"stateCode\"?: \"TX\" }]. socCode is the 6-digit Standard Occupational Classification code (find yours at bls.gov/soc). Omit stateCode for national data, or use a two-letter USPS state code for state-level data.",
+            "prefill": [
+                { "socCode": "15-1252" }
+            ]
+        },
+        "apiKey": {
+            "title": "BLS API key (optional)",
+            "type": "string",
+            "editor": "textfield",
+            "isSecret": true,
+            "description": "Optional free registration key from bls.gov/developers, raises the daily request limit and historical range. Not required for small batches."
+        }
+    },
+    "required": ["occupations"]
+}
