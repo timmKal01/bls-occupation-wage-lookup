@@ -62,6 +62,12 @@ wage, and fetches all five in one batched call per occupation/area.
 and 10 years of history. A free registration key (see Input above) raises
 that to 500 requests per day with a longer history window.
 
+## Pricing note
+
+Billed per **occupation lookup**, not per wage field returned — one charge
+per `socCode`/`stateCode` pair requested, whether all five wage measures
+come back populated or several are `null` for that occupation/area.
+
 ## Related products
 
 - [US Labor Market Indicator Lookup](https://github.com/timmKal01/us-labor-market-indicator-lookup) — broader BLS labor market indicators, not scoped to a single occupation's pay
