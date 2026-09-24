@@ -3,11 +3,24 @@
     "type": "object",
     "schemaVersion": 1,
     "properties": {
+        "socCode": {
+            "title": "SOC code (for a single occupation)",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Leave the Occupations (multiple) field below empty to use this single-lookup shortcut instead. The 6-digit Standard Occupational Classification code, e.g. \"15-1252\" (find yours at bls.gov/soc).",
+            "prefill": "15-1252"
+        },
+        "stateCode": {
+            "title": "State code (optional, for a single occupation)",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Two-letter USPS state code for state-level data, e.g. \"TX\". Omit for national data. Only used together with SOC code above."
+        },
         "occupations": {
-            "title": "Occupations",
+            "title": "Occupations (multiple)",
             "type": "array",
             "editor": "json",
-            "description": "List of occupations to look up: [{ \"socCode\": \"15-1252\", \"stateCode\"?: \"TX\" }]. socCode is the 6-digit Standard Occupational Classification code (find yours at bls.gov/soc). Omit stateCode for national data, or use a two-letter USPS state code for state-level data.",
+            "description": "For looking up several occupations in one run instead of one at a time. One entry per occupation: { \"socCode\": \"15-1252\", \"stateCode\"?: \"TX\" }. Ignored if SOC code above is filled in.",
             "prefill": [
                 { "socCode": "15-1252" }
             ]
@@ -19,6 +32,5 @@
             "isSecret": true,
             "description": "Optional free registration key from bls.gov/developers, raises the daily request limit and historical range. Not required for small batches."
         }
-    },
-    "required": ["occupations"]
+    }
 }
