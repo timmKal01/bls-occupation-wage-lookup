@@ -1,0 +1,63 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Overview",
+            "transformation": {
+                "fields": [
+                    "socCode",
+                    "stateCode",
+                    "found",
+                    "employment",
+                    "dataYear",
+                    "annualMeanWage",
+                    "hourlyMeanWage",
+                    "annualMedianWage",
+                    "hourlyMedianWage"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "socCode": {
+                        "label": "SOC code",
+                        "format": "text"
+                    },
+                    "stateCode": {
+                        "label": "State code",
+                        "format": "text"
+                    },
+                    "found": {
+                        "label": "Found",
+                        "format": "boolean"
+                    },
+                    "employment": {
+                        "label": "Employment",
+                        "format": "number"
+                    },
+                    "dataYear": {
+                        "label": "Data year",
+                        "format": "text"
+                    },
+                    "annualMeanWage": {
+                        "label": "Annual mean wage",
+                        "format": "number"
+                    },
+                    "hourlyMeanWage": {
+                        "label": "Hourly mean wage",
+                        "format": "number"
+                    },
+                    "annualMedianWage": {
+                        "label": "Annual median wage",
+                        "format": "number"
+                    },
+                    "hourlyMedianWage": {
+                        "label": "Hourly median wage",
+                        "format": "number"
+                    }
+                }
+            }
+        }
+    }
+}
