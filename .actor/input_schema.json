@@ -7,20 +7,20 @@
             "title": "SOC code (for a single occupation)",
             "type": "string",
             "editor": "textfield",
-            "description": "Leave the Occupations (multiple) field below empty to use this single-lookup shortcut instead. The 6-digit Standard Occupational Classification code, e.g. \"15-1252\" (find yours at bls.gov/soc).",
+            "description": "Leave the Occupations (multiple) field below empty to use this single-lookup shortcut instead. The 6-digit Standard Occupational Classification code, e.g. \"15-1252\" (find yours at bls.gov/soc). \"15-1252.00\" works too.",
             "prefill": "15-1252"
         },
         "stateCode": {
             "title": "State code (optional, for a single occupation)",
             "type": "string",
             "editor": "textfield",
-            "description": "Two-letter USPS state code for state-level data, e.g. \"TX\". Omit for national data. Only used together with SOC code above."
+            "description": "State for state-level data, as a two-letter code (\"TX\") or a name (\"Texas\"). Omit for national data. Only used together with SOC code above."
         },
         "occupations": {
             "title": "Occupations (multiple)",
             "type": "array",
             "editor": "json",
-            "description": "For looking up several occupations in one run instead of one at a time. One entry per occupation: { \"socCode\": \"15-1252\", \"stateCode\"?: \"TX\" }. Ignored if SOC code above is filled in.",
+            "description": "For looking up several occupations in one run instead of one at a time. One entry per occupation: { \"socCode\": \"15-1252\", \"stateCode\"?: \"TX\" }, or just a list of codes like [\"15-1252\", \"29-1141\"]. An entry that can't be looked up comes back with an error and isn't charged. Ignored if SOC code above is filled in.",
             "prefill": [
                 { "socCode": "15-1252" }
             ]

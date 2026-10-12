@@ -16,17 +16,25 @@ const occupations = singleSocCode
     ? [{ socCode: singleSocCode, stateCode: singleStateCode }]
     : (occupationsInput?.length ? occupationsInput : []);
 
+// An empty form still produces a useful example instead of a failed run.
 if (occupations.length === 0) {
-    throw new Error('Provide a SOC code, or use the Occupations (multiple) field.');
+    log.info('No SOC code given, so looking up the example occupation 15-1252 (software developers).');
+    occupations.push({ socCode: '15-1252' });
 }
 
-const results = await fetchOccupationWages({ occupations, apiKey });
+const { records, serviceErrors } = await fetchOccupationWages({ occupations, apiKey });
 
-for (const record of results) {
+// Entries with bad input, or that BLS refused, are still output (with an `error` explaining why) but not charged.
+for (const { billable, ...record } of records) {
     await Actor.pushData({ ...record, checkedAt: new Date().toISOString() });
-    await Actor.charge({ eventName: OCCUPATION_CHECKED_EVENT });
+    if (billable) await Actor.charge({ eventName: OCCUPATION_CHECKED_EVENT });
 }
 
-log.info(`Checked ${results.length} occupation lookup(s)`);
+const billed = records.filter((r) => r.billable).length;
+log.info(`Checked ${billed} of ${records.length} occupation lookup(s)`);
 
-await Actor.exit();
+if (billed === 0 && serviceErrors > 0) {
+    await Actor.fail(`BLS didn't answer any lookups: ${records.find((r) => r.error)?.error ?? 'unknown error'}`);
+} else {
+    await Actor.exit();
+}

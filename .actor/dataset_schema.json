@@ -14,7 +14,8 @@
                     "annualMeanWage",
                     "hourlyMeanWage",
                     "annualMedianWage",
-                    "hourlyMedianWage"
+                    "hourlyMedianWage",
+                    "error"
                 ]
             },
             "display": {
@@ -55,6 +56,10 @@
                     "hourlyMedianWage": {
                         "label": "Hourly median wage",
                         "format": "number"
+                    },
+                    "error": {
+                        "label": "Error (not charged)",
+                        "format": "text"
                     }
                 }
             }
