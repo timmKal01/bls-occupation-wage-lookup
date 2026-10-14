@@ -1,21 +1,53 @@
-# BLS Occupation Wage Lookup: National & State Pay Data
+# Salary Data by Occupation: BLS Wages by State
 
-Give it an occupation's SOC code. Get back official U.S. Bureau of Labor
-Statistics wage and employment data, nationally or for a specific state,
-straight from the Occupational Employment and Wage Statistics (OEWS)
-survey.
+Salary benchmarking data for recruiters, HR teams and compensation
+analysts. Pick a job and get back what it pays in the U.S.: mean and
+median annual salary, hourly wage, and how many people work in it,
+nationally or in any state.
+
+The figures are the official U.S. Bureau of Labor Statistics salary
+statistics from the Occupational Employment and Wage Statistics (OEWS)
+survey, which collects pay data from employers, not from self-reported
+salary sites.
+
+## What you get
+
+One row of salary statistics per job and location:
+
+- Mean and median annual salary
+- Mean and median hourly wage
+- Employment: the estimated number of people employed in that job
+- The year the figures come from
 
 ## Who this is for
 
-- **HR and recruiting teams** benchmarking a role's compensation against national or state pay data before making an offer.
-- **Compensation analysts** building pay bands grounded in official government data instead of self-reported salary sites.
-- **Researchers and journalists** covering labor market and wage trends by occupation and state.
+- **Recruiters** checking what a role pays in a state before making an offer or advising a client.
+- **HR and compensation teams** building salary bands and pay ranges from official government data.
+- **Job boards and career sites** showing typical pay for a job, or comparing it across states.
+- **Researchers and journalists** covering wages by occupation and state.
 
 ## Input
 
+Each job is identified by its SOC code (Standard Occupational
+Classification), the code the U.S. government uses for every occupation.
+Find any job's code at [bls.gov/soc](https://www.bls.gov/soc/). Some
+common ones:
+
+| Job | SOC code |
+|---|---|
+| Software developers | `15-1252` |
+| Registered nurses | `29-1141` |
+| Accountants and auditors | `13-2011` |
+| Human resources specialists | `13-1071` |
+| General and operations managers | `11-1021` |
+| Customer service representatives | `43-4051` |
+| Heavy and tractor-trailer truck drivers | `53-3032` |
+| Retail salespersons | `41-2031` |
+
 | Field | Type | Description |
 |---|---|---|
-| `occupations` | array | `[{ "socCode": "15-1252", "stateCode"?: "TX" }]`. `socCode` is the 6-digit Standard Occupational Classification code, find yours at [bls.gov/soc](https://www.bls.gov/soc/). O*NET-style codes like `"15-1252.00"` work too, and a plain list of codes (`["15-1252", "29-1141"]`) is fine. Omit `stateCode` for national data, or give a two-letter code (`"TX"`) or the state's name (`"Texas"`). |
+| `socCode` + `stateCode` | string | Shortcut for a single job: `"15-1252"`, plus an optional state. |
+| `occupations` | array | Several jobs in one run: `[{ "socCode": "15-1252", "stateCode"?: "TX" }]`. O*NET-style codes like `"15-1252.00"` work too, and a plain list of codes (`["15-1252", "29-1141"]`) is fine. Omit `stateCode` for national data, or give a two-letter code (`"TX"`) or the state's name (`"Texas"`). |
 | `apiKey` | string (optional) | Free registration key from [bls.gov/developers](https://www.bls.gov/developers/), raises the daily request limit and historical range. Not required for small batches. |
 
 ```json
@@ -79,4 +111,4 @@ up) are never charged.
 
 ## Related products
 
-- [US Labor Market Indicator Lookup](https://github.com/timmKal01/us-labor-market-indicator-lookup) — broader BLS labor market indicators, not scoped to a single occupation's pay
+- [US Labor Market Indicator Lookup](https://github.com/timmKal01/us-labor-market-indicator-lookup) for broader BLS labor market indicators, not tied to one job's pay

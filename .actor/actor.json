@@ -2,7 +2,7 @@
     "actorSpecification": 1,
     "name": "bls-occupation-wage-lookup",
     "title": "Salary Data by Occupation: BLS Wages by State",
-    "description": "Look up official U.S. Bureau of Labor Statistics wage and employment data for an occupation, nationally or by state, using its SOC code. Annual mean and median wage, hourly wage, and employment counts, straight from the OEWS survey.",
+    "description": "Salary benchmarking for recruiters and HR teams. Official U.S. Bureau of Labor Statistics pay data for any job: mean and median annual salary, hourly wage and employment, nationally or by state. Enter a job's SOC code, get one row of salary statistics per job and location.",
     "version": "0.1",
     "meta": {
         "templateId": "custom-no-proxy"
