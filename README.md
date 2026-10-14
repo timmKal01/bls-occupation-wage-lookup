@@ -111,4 +111,4 @@ up) are never charged.
 
 ## Related products
 
-- [US Labor Market Indicator Lookup](https://github.com/timmKal01/us-labor-market-indicator-lookup) for broader BLS labor market indicators, not tied to one job's pay
+- [US Labor Data](https://apify.com/m_ctim/us-labor-market-indicator-lookup) for broader BLS labor market indicators, not tied to one job's pay
