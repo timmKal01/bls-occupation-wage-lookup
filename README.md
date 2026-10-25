@@ -108,7 +108,3 @@ measures come back populated or several are `null` for that
 occupation/area. Entries with an `error` (input that isn't a valid code or
 state, or a lookup BLS refused, for example once its daily limit is used
 up) are never charged.
-
-## Related products
-
-- [US Labor Data](https://apify.com/m_ctim/us-labor-market-indicator-lookup) for broader BLS labor market indicators, not tied to one job's pay
