@@ -65,6 +65,7 @@ One record per occupation lookup:
 
 ```json
 {
+  "rowType": "wage",
   "socCode": "15-1252",
   "stateCode": null,
   "found": true,
@@ -77,6 +78,8 @@ One record per occupation lookup:
   "checkedAt": "2026-09-19T12:00:00.000Z"
 }
 ```
+
+`rowType` is `"wage"` for every lookup BLS answered, including one it has no data for (`found: false`), and `"error"` for an entry with an `error`.
 
 Fields come back as `null` if that specific measure has no data available
 for the requested occupation/area combination (common for niche

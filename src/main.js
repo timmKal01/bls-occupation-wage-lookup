@@ -26,7 +26,7 @@ const { records, serviceErrors } = await fetchOccupationWages({ occupations, api
 
 // Entries with bad input, or that BLS refused, are still output (with an `error` explaining why) but not charged.
 for (const { billable, ...record } of records) {
-    await Actor.pushData({ ...record, checkedAt: new Date().toISOString() });
+    await Actor.pushData({ rowType: record.error ? 'error' : 'wage', ...record, checkedAt: new Date().toISOString() });
     if (billable) await Actor.charge({ eventName: OCCUPATION_CHECKED_EVENT });
 }
 
