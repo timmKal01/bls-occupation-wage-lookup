@@ -1,3 +1,7 @@
+// Some public APIs refuse requests that identify themselves only as Node's default "node" user agent (data.cms.gov
+// started doing so in October 2026), so every request says which tool is asking and where to find it.
+const USER_AGENT = 'bls-occupation-wage-lookup/0.1 (+https://apify.com/m_ctim/bls-occupation-wage-lookup)';
+
 const API_URL = 'https://api.bls.gov/publicAPI/v2/timeseries/data/';
 
 const TRANSIENT_STATUSES = new Set([429, 500, 502, 503, 504]);
@@ -56,7 +60,7 @@ async function fetchWithRetry(url, options) {
         const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
         let res;
         try {
-            res = await fetch(url, { ...options, signal: controller.signal });
+            res = await fetch(url, { ...options, headers: { 'User-Agent': USER_AGENT, ...options?.headers }, signal: controller.signal });
         } catch (err) {
             lastError = err.name === 'AbortError' ? new Error(`Request timed out after ${REQUEST_TIMEOUT_MS}ms: ${url}`) : err;
             if (attempt < MAX_ATTEMPTS) {
